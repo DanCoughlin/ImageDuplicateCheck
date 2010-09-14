@@ -1,5 +1,26 @@
 #!/Library/Frameworks/Python.framework/Versions/Current/bin/python
 
+#	author: dan coughlin
+#	date: 2010-09-14
+#	file: checkdupe.py
+#	purpose: this script will check a directory 
+#	for duplicate images.  If a duplicate image
+#	is found, it will spit out the names of 
+#	both images.  This does not do recursive 
+#	directory traversing, it only checks the directory
+#	given
+#
+#	example: 
+#	./checkdupe.py /path/to/directory/
+#	example if directory has spaces:
+#	./checkdup.py "/path/to directory/with spaces"
+#
+
+
+
+
+
+
 import sys
 import Image
 import os,glob
@@ -68,10 +89,9 @@ def check_images(path):
 				# determine if two files are the same
 				status = is_the_same(base, check)
 				if status:
-					print "-------------------------------------------"
+					print "Duplicate:"
 					print infile
-					print comp
-					print "-------------------------------------------"
+					print "%s\n" %comp
 
 
 def main():
@@ -80,7 +100,7 @@ def main():
 	path = sys.argv[1]
 
 	if os.path.isdir(path):
-		print "Checking for duplicate images in:\n%s" % path 
+		print "Checking for duplicate images in:\n%s\n" % path 
 		check_images(path)
 	else:
 		print "%s is not a directory" % path 
